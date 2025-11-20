@@ -1,0 +1,216 @@
+<mxfile host="app.diagrams.net" modified="2025-01-20T09:30:00.000Z" agent="Claude" version="24.0.0">
+  <diagram name="Evo-1 Architecture" id="evo1-architecture">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1500" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title -->
+        <mxCell id="title" value="Evo-1: Lightweight VLA with Preserved Semantic Alignment" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1;fontColor=#004D40;" vertex="1" parent="1">
+          <mxGeometry x="300" y="20" width="1000" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Subtitle -->
+        <mxCell id="subtitle" value="0.77B params | No Robot Pretraining | SOTA on Meta-World (80.6%) & LIBERO (94.8%)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontColor=#00695C;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="300" y="60" width="1000" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Training Phases -->
+        <mxCell id="training-banner" value="Two-Stage Training Paradigm 🎓" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#004D40;strokeColor=#00695C;fontSize=14;fontColor=#E0F2F1;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="80" y="100" width="1440" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Stage 1 -->
+        <mxCell id="stage1-section" value="Stage 1: Action Expert Alignment 🎯" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#4CAF50;fontSize=13;fontColor=#1B5E20;" vertex="1" parent="1">
+          <mxGeometry x="80" y="160" width="700" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="stage1-freeze" value="❄️ Freeze: VLM Backbone (all layers)&#xa;Prevent noisy gradients from disrupting pretrained representations" style="text;strokeColor=#81C784;fillColor=#C8E6C9;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;fontColor=#2E7D32;fontStyle=1;" vertex="1" parent="stage1-section">
+          <mxGeometry y="30" width="700" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="stage1-train" value="🔥 Train: Action Expert + Integration Module&#xa;Gradually align randomly initialized weights with multimodal embedding space" style="text;strokeColor=#81C784;fillColor=#C8E6C9;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;fontColor=#2E7D32;fontStyle=1;" vertex="1" parent="stage1-section">
+          <mxGeometry y="70" width="700" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="stage1-goal" value="🎯 Goal: Establish coherent alignment before full fine-tuning" style="text;strokeColor=#81C784;fillColor=#C8E6C9;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;fontColor=#2E7D32;fontStyle=2;" vertex="1" parent="stage1-section">
+          <mxGeometry y="110" width="700" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Stage 2 -->
+        <mxCell id="stage2-section" value="Stage 2: Full-scale Fine-tuning 🚀" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#2196F3;fontSize=13;fontColor=#0D47A1;" vertex="1" parent="1">
+          <mxGeometry x="820" y="160" width="700" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="stage2-unfreeze" value="🔓 Unfreeze: Entire VLM Backbone&#xa;Allow joint refinement of perception and control" style="text;strokeColor=#64B5F6;fillColor=#BBDEFB;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;fontColor=#1565C0;fontStyle=1;" vertex="1" parent="stage2-section">
+          <mxGeometry y="30" width="700" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="stage2-train" value="🔥 Train: VLM + Integration Module + Action Expert (end-to-end)&#xa;Deeper integration while preserving semantic space" style="text;strokeColor=#64B5F6;fillColor=#BBDEFB;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;fontColor=#1565C0;fontStyle=1;" vertex="1" parent="stage2-section">
+          <mxGeometry y="70" width="700" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="stage2-goal" value="✨ Result: Strong performance + maintained multimodal understanding" style="text;strokeColor=#64B5F6;fillColor=#BBDEFB;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;fontColor=#1565C0;fontStyle=2;" vertex="1" parent="stage2-section">
+          <mxGeometry y="110" width="700" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Input Layer -->
+        <mxCell id="input-section" value="Input Layer" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#FF6F00;fontSize=13;fontColor=#E65100;" vertex="1" parent="1">
+          <mxGeometry x="80" y="340" width="340" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="input-images" value="📷 Multi-view RGB Images {I^i_t}&#xa;Resized to 448×448, pixel-unshuffle (4× reduction)" style="text;strokeColor=#FFB74D;fillColor=#FFE0B2;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;fontColor=#EF6C00;" vertex="1" parent="input-section">
+          <mxGeometry y="30" width="340" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="input-instruction" value="💬 Language Instruction L_t&#xa;Natural language task description" style="text;strokeColor=#FFB74D;fillColor=#FFE0B2;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;fontColor=#EF6C00;" vertex="1" parent="input-section">
+          <mxGeometry y="70" width="340" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="input-state" value="🎮 Robot State s_t&#xa;Joint positions and proprioceptive info" style="text;strokeColor=#FFB74D;fillColor=#FFE0B2;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;fontColor=#EF6C00;" vertex="1" parent="input-section">
+          <mxGeometry y="110" width="340" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- VLM Backbone -->
+        <mxCell id="vlm-section" value="Native Multimodal VLM: InternVL3-1B" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#7B1FA2;fontSize=13;fontColor=#4A148C;" vertex="1" parent="1">
+          <mxGeometry x="480" y="340" width="420" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="vlm-native" value="🌟 Native Multimodal Paradigm&#xa;Vision + Language jointly learned (not post-hoc alignment!)" style="text;strokeColor=#BA68C8;fillColor=#E1BEE7;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;fontColor=#6A1B9A;fontStyle=1;" vertex="1" parent="vlm-section">
+          <mxGeometry y="30" width="420" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="vlm-vision" value="🖼️ Vision: InternViT-300M&#xa;Distilled from InternViT-6B, compact yet expressive" style="text;strokeColor=#BA68C8;fillColor=#E1BEE7;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;fontColor=#6A1B9A;" vertex="1" parent="vlm-section">
+          <mxGeometry y="70" width="420" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="vlm-language" value="📝 Language: Qwen2.5-0.5B&#xa;Strong capability despite small size (0.5B params)" style="text;strokeColor=#BA68C8;fillColor=#E1BEE7;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;fontColor=#6A1B9A;" vertex="1" parent="vlm-section">
+          <mxGeometry y="110" width="420" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="vlm-fusion" value="🔗 Patch-level Fusion&#xa;Image embeddings replace <img> placeholder tokens" style="text;strokeColor=#BA68C8;fillColor=#E1BEE7;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;fontColor=#6A1B9A;" vertex="1" parent="vlm-section">
+          <mxGeometry y="150" width="420" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="vlm-layers" value="⚡ Use First 14 Layers Only&#xa;Intermediate layers have stronger cross-modal alignment" style="text;strokeColor=#BA68C8;fillColor=#E1BEE7;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;fontColor=#6A1B9A;fontStyle=1;" vertex="1" parent="vlm-section">
+          <mxGeometry y="190" width="420" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="vlm-output" value="➡️ Output: Fused Representation z_t ∈ ℝ^{d_z}&#xa;Joint encoding of visual and linguistic information" style="text;strokeColor=#BA68C8;fillColor=#E1BEE7;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;fontColor=#6A1B9A;" vertex="1" parent="vlm-section">
+          <mxGeometry y="230" width="420" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Integration Module -->
+        <mxCell id="integration-section" value="Integration Module 🔌" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#E1F5FE;strokeColor=#0277BD;fontSize=13;fontColor=#01579B;" vertex="1" parent="1">
+          <mxGeometry x="960" y="340" width="420" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="integration-purpose" value="🎯 Purpose: Align multimodal & proprioceptive info&#xa;Bridge perception and control effectively" style="text;strokeColor=#4FC3F7;fillColor=#B3E5FC;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;fontColor=#0277BD;fontStyle=1;" vertex="1" parent="integration-section">
+          <mxGeometry y="30" width="420" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="integration-method" value="🔗 Method: Concatenation (not projection!)&#xa;[z_t ; s_t] → Preserves complete information" style="text;strokeColor=#4FC3F7;fillColor=#B3E5FC;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;fontColor=#0277BD;fontStyle=1;" vertex="1" parent="integration-section">
+          <mxGeometry y="70" width="420" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="integration-usage" value="🔑 Usage: Serves as key-value for action expert&#xa;Provides information-preserving global context" style="text;strokeColor=#4FC3F7;fillColor=#B3E5FC;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;fontColor=#0277BD;" vertex="1" parent="integration-section">
+          <mxGeometry y="110" width="420" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Cross-modulated Diffusion Transformer -->
+        <mxCell id="action-section" value="Cross-modulated Diffusion Transformer 🌊" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#FFF8E1;strokeColor=#F57F17;fontSize=13;fontColor=#F57F17;" vertex="1" parent="1">
+          <mxGeometry x="960" y="540" width="420" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="action-pure-ca" value="✨ Pure Cross-Attention Architecture&#xa;NO self-attention (unlike π₀ & SmolVLA)" style="text;strokeColor=#FFD54F;fillColor=#FFF9C4;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;fontColor=#F57F17;fontStyle=1;" vertex="1" parent="action-section">
+          <mxGeometry y="30" width="420" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="action-flow" value="🌊 Flow Matching Training&#xa;A^τ_t = τ*A_t + (1-τ)*ε, τ ~ Beta(α,β)" style="text;strokeColor=#FFD54F;fillColor=#FFF9C4;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;fontColor=#F57F17;" vertex="1" parent="action-section">
+          <mxGeometry y="70" width="420" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="action-loss" value="📊 Loss: L_τ = E[||v_θ(A^τ_t, z_t, s_t) - u(A^τ_t|A_t)||²]&#xa;Learn time-conditioned velocity field" style="text;strokeColor=#FFD54F;fillColor=#FFF9C4;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;fontColor=#F57F17;" vertex="1" parent="action-section">
+          <mxGeometry y="110" width="420" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="action-inference" value="🚀 Inference: Denoising process&#xa;Progressively refine noisy action to ground truth" style="text;strokeColor=#FFD54F;fillColor=#FFF9C4;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;fontColor=#F57F17;" vertex="1" parent="action-section">
+          <mxGeometry y="150" width="420" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="action-output" value="⚙️ Output: Action Sequence Â_t = [â_t, ..., â_{t+H-1}]&#xa;H future actions for continuous control" style="text;strokeColor=#FFD54F;fillColor=#FFF9C4;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;fontColor=#F57F17;fontStyle=1;" vertex="1" parent="action-section">
+          <mxGeometry y="190" width="420" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Semantic Preservation -->
+        <mxCell id="semantic-section" value="Semantic Preservation ✨" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#FCE4EC;strokeColor=#C2185B;fontSize=13;fontColor=#880E4F;" vertex="1" parent="1">
+          <mxGeometry x="80" y="540" width="820" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="semantic-problem" value="❌ Problem: Direct end-to-end training&#xa;Noisy gradients → Semantic drift → Poor generalization" style="text;strokeColor=#F06292;fillColor=#F8BBD0;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;fontColor=#C2185B;" vertex="1" parent="semantic-section">
+          <mxGeometry y="30" width="820" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="semantic-solution" value="✅ Solution: Two-stage training&#xa;Stage 1 protects VLM → Stage 2 enables joint optimization" style="text;strokeColor=#F06292;fillColor=#F8BBD0;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;fontColor=#C2185B;fontStyle=1;" vertex="1" parent="semantic-section">
+          <mxGeometry y="70" width="820" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="semantic-proof" value="🔬 Experimental Proof:&#xa;InternVL3 attention maps remain spatially consistent after training&#xa;Prismatic (OpenVLA) shows degraded coherence & semantic drift" style="text;strokeColor=#F06292;fillColor=#F8BBD0;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;fontColor=#C2185B;" vertex="1" parent="semantic-section">
+          <mxGeometry y="110" width="820" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="semantic-benefit" value="🎯 Benefit: Strong generalization without robot data pretraining!" style="text;strokeColor=#F06292;fillColor=#F8BBD0;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;fontColor=#C2185B;fontStyle=2;" vertex="1" parent="semantic-section">
+          <mxGeometry y="160" width="820" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Performance -->
+        <mxCell id="perf-section" value="State-of-the-Art Performance 🏆" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#E0F7FA;strokeColor=#00838F;fontSize=13;fontColor=#006064;" vertex="1" parent="1">
+          <mxGeometry x="80" y="760" width="1300" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="perf-meta" value="🥇 Meta-World: 80.6% (Easy: 89.2% | Medium: 76.8% | Hard: 77.2% | Very Hard: 79.2%)&#xa;Previous best: SmolVLA 68.2% → +12.4% improvement | Consistently best across ALL difficulty levels" style="text;strokeColor=#4DD0E1;fillColor=#B2EBF2;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;fontColor=#00695C;fontStyle=1;" vertex="1" parent="perf-section">
+          <mxGeometry y="30" width="1300" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="perf-libero" value="🥈 LIBERO: 94.8% (Spatial: 92.7% | Object: 97.7% | Goal: 96.3% | Long: 92.3%)&#xa;Competitive with π₀ (94.2%), especially strong on long-horizon tasks (92.3% vs π₀'s 85.2%)" style="text;strokeColor=#4DD0E1;fillColor=#B2EBF2;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;fontColor=#00695C;fontStyle=1;" vertex="1" parent="perf-section">
+          <mxGeometry y="70" width="1300" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="perf-robotwin" value="🥇 RoboTwin (Dual-arm): 37.8% average&#xa;Previous best: π₀ 30.9% → +6.9% improvement | Hard tasks: Click Alarm 58% (π₀: 11%), Dump Bin 37% (π₀: 24%)" style="text;strokeColor=#4DD0E1;fillColor=#B2EBF2;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;fontColor=#00695C;fontStyle=1;" vertex="1" parent="perf-section">
+          <mxGeometry y="110" width="1300" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="perf-real" value="🤖 Real-World: 78% success rate | High inference frequency | Low memory overhead&#xa;Outperforms all baseline methods in physical deployment" style="text;strokeColor=#4DD0E1;fillColor=#B2EBF2;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;fontColor=#00695C;fontStyle=1;" vertex="1" parent="perf-section">
+          <mxGeometry y="150" width="1300" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="perf-key" value="🔑 Key Insight: 0.77B params achieves SOTA WITHOUT robot data pretraining!&#xa;Smallest model, best performance → Architecture design > brute-force scaling" style="text;strokeColor=#4DD0E1;fillColor=#B2EBF2;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;fontColor=#00695C;fontStyle=2;" vertex="1" parent="perf-section">
+          <mxGeometry y="190" width="1300" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Comparison -->
+        <mxCell id="comparison" value="Model Comparison: Evo-1 (0.77B) vs π₀ (3.5B) vs SmolVLA (2.25B) vs OpenVLA (7B)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#004D40;strokeColor=#00695C;fontSize=12;fontColor=#E0F2F1;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="80" y="1020" width="1300" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Key Stats -->
+        <mxCell id="stats" value="Architecture: Total 0.77B | VLM: InternVL3-1B (~1B) | Training: Two-stage (freeze then unfreeze) | Innovation: Native multimodal + semantic preservation | Deployment: Consumer GPUs" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#263238;strokeColor=#37474F;fontSize=11;fontColor=#ECEFF1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="80" y="1080" width="1300" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Arrows with optimal routing -->
+        <mxCell id="arrow1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;strokeColor=#FF6F00;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="input-section" target="vlm-section">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="450" y="415" />
+              <mxPoint x="450" y="480" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arrow2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;strokeColor=#7B1FA2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="vlm-section" target="integration-section">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="930" y="480" />
+              <mxPoint x="930" y="420" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arrow3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;strokeColor=#0277BD;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="integration-section" target="action-section">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor="#FF6F00;dashed=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="1" source="input-section" target="integration-section">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="250" y="320" />
+              <mxPoint x="940" y="320" />
+              <mxPoint x="940" y="460" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Labels -->
+        <mxCell id="label1" value="Multi-view&#xa;Input" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#FF6F00;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="430" y="395" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="label2" value="Fused&#xa;z_t" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#7B1FA2;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="910" y="450" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="label3" value="[z_t; s_t]" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#0277BD;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="1150" y="510" width="50" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="label4" value="Robot&#xa;State" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;fontColor=#FF6F00;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="870" y="330" width="40" height="20" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

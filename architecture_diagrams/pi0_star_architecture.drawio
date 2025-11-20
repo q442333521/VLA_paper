@@ -1,0 +1,160 @@
+<mxfile host="app.diagrams.net" modified="2025-01-20T09:00:00.000Z" agent="Claude" version="24.0.0">
+  <diagram name="π₀* 0.6 Architecture" id="pi0-star-architecture">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title -->
+        <mxCell id="title" value="π₀* 0.6: Vision-Language-Action Model with RECAP" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1;fontColor=#2C3E50;" vertex="1" parent="1">
+          <mxGeometry x="400" y="20" width="800" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Input Layer -->
+        <mxCell id="input-section" value="Input" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#4CAF50;fontSize=14;fontColor=#1B5E20;" vertex="1" parent="1">
+          <mxGeometry x="80" y="100" width="280" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="input-images" value="📷 RGB Images (X)&#xa;Multi-view camera streams" style="text;strokeColor=#81C784;fillColor=#C8E6C9;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=12;fontColor=#2E7D32;" vertex="1" parent="input-section">
+          <mxGeometry y="30" width="280" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="input-state" value="🎮 Robot State (q)&#xa;Joint positions, gripper state" style="text;strokeColor=#81C784;fillColor=#C8E6C9;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=12;fontColor=#2E7D32;" vertex="1" parent="input-section">
+          <mxGeometry y="70" width="280" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="input-language" value="💬 Language Instruction (ℓ)&#xa;Natural language task description" style="text;strokeColor=#81C784;fillColor=#C8E6C9;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=12;fontColor=#2E7D32;" vertex="1" parent="input-section">
+          <mxGeometry y="110" width="280" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="input-indicator" value="⚡ Advantage Indicator (I_t)&#xa;'Advantage: positive/negative'" style="text;strokeColor=#81C784;fillColor=#C8E6C9;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=12;fontColor=#2E7D32;" vertex="1" parent="input-section">
+          <mxGeometry y="150" width="280" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- VLM Backbone -->
+        <mxCell id="vlm-section" value="VLM Backbone (Gemma 3 - 4B)" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#2196F3;fontSize=14;fontColor=#0D47A1;" vertex="1" parent="1">
+          <mxGeometry x="460" y="100" width="320" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="vlm-vision" value="🖼️ Vision Encoder&#xa;SigLIP - processes images" style="text;strokeColor=#64B5F6;fillColor=#BBDEFB;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1565C0;" vertex="1" parent="vlm-section">
+          <mxGeometry y="30" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="vlm-language" value="📝 Language Decoder&#xa;Gemma 3 4B model" style="text;strokeColor=#64B5F6;fillColor=#BBDEFB;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1565C0;" vertex="1" parent="vlm-section">
+          <mxGeometry y="70" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="vlm-fusion" value="🔗 Feature Fusion&#xa;Concatenate visual + text + state tokens" style="text;strokeColor=#64B5F6;fillColor=#BBDEFB;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1565C0;" vertex="1" parent="vlm-section">
+          <mxGeometry y="110" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="vlm-output" value="➡️ Output Features (o_t)&#xa;Rich multimodal embeddings" style="text;strokeColor=#64B5F6;fillColor=#BBDEFB;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1565C0;" vertex="1" parent="vlm-section">
+          <mxGeometry y="150" width="320" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="vlm-ki" value="🔧 Knowledge Insulation (KI)&#xa;Fast training, better generalization" style="text;strokeColor=#64B5F6;fillColor=#BBDEFB;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1565C0;" vertex="1" parent="vlm-section">
+          <mxGeometry y="180" width="320" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Action Expert -->
+        <mxCell id="action-section" value="Action Expert (860M)" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#FF9800;fontSize=14;fontColor=#E65100;" vertex="1" parent="1">
+          <mxGeometry x="880" y="100" width="340" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="action-flow" value="🌊 Flow Matching Decoder&#xa;Continuous action generation" style="text;strokeColor=#FFB74D;fillColor=#FFE0B2;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=12;fontColor=#EF6C00;" vertex="1" parent="action-section">
+          <mxGeometry y="30" width="340" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="action-chunk" value="📦 Action Chunking&#xa;Generates H=50 future actions" style="text;strokeColor=#FFB74D;fillColor=#FFE0B2;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=12;fontColor=#EF6C00;" vertex="1" parent="action-section">
+          <mxGeometry y="70" width="340" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="action-subtask" value="💭 Subtask Prediction (ℓ̂)&#xa;Predicts next intermediate goals" style="text;strokeColor=#FFB74D;fillColor=#FFE0B2;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=12;fontColor=#EF6C00;" vertex="1" parent="action-section">
+          <mxGeometry y="110" width="340" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="action-output" value="⚙️ Output Actions (a_t:t+H)&#xa;Joint positions + gripper commands (50Hz)" style="text;strokeColor=#FFB74D;fillColor=#FFE0B2;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=12;fontColor=#EF6C00;" vertex="1" parent="action-section">
+          <mxGeometry y="150" width="340" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="action-condition" value="🎯 Advantage Conditioning&#xa;Uses I_t to guide action quality" style="text;strokeColor=#FFB74D;fillColor=#FFE0B2;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=12;fontColor=#EF6C00;" vertex="1" parent="action-section">
+          <mxGeometry y="190" width="340" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Value Function -->
+        <mxCell id="value-section" value="Value Function V^πref (670M)" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#9C27B0;fontSize=14;fontColor=#4A148C;" vertex="1" parent="1">
+          <mxGeometry x="460" y="380" width="360" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="value-input" value="📊 Input: Observation (o_t) + Task (ℓ)" style="text;strokeColor=#BA68C8;fillColor=#E1BEE7;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=12;fontColor=#6A1B9A;" vertex="1" parent="value-section">
+          <mxGeometry y="30" width="360" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="value-predict" value="🎯 Predicts: -(steps to success)&#xa;Normalized to (-1, 0) range" style="text;strokeColor=#BA68C8;fillColor=#E1BEE7;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=12;fontColor=#6A1B9A;" vertex="1" parent="value-section">
+          <mxGeometry y="60" width="360" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="value-advantage" value="📈 Computes Advantage: A(o_t, a_t, ℓ)&#xa;Determines if action improves task progress" style="text;strokeColor=#BA68C8;fillColor=#E1BEE7;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=12;fontColor=#6A1B9A;" vertex="1" parent="value-section">
+          <mxGeometry y="100" width="360" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="value-threshold" value="⚖️ Threshold ε_ℓ (30th percentile)&#xa;Sets indicator: I_t = 1[A > ε_ℓ]" style="text;strokeColor=#BA68C8;fillColor=#E1BEE7;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=12;fontColor=#6A1B9A;" vertex="1" parent="value-section">
+          <mxGeometry y="140" width="360" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- RECAP Loop -->
+        <mxCell id="recap-section" value="RECAP Training Loop" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#FCE4EC;strokeColor=#E91E63;fontSize=14;fontColor=#880E4F;" vertex="1" parent="1">
+          <mxGeometry x="880" y="380" width="360" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="recap-1" value="1️⃣ Data Collection&#xa;Autonomous rollouts + expert interventions" style="text;strokeColor=#F06292;fillColor=#F8BBD0;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=12;fontColor=#C2185B;" vertex="1" parent="recap-section">
+          <mxGeometry y="30" width="360" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="recap-2" value="2️⃣ Value Function Training&#xa;Train V^πref on collected data" style="text;strokeColor=#F06292;fillColor=#F8BBD0;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=12;fontColor=#C2185B;" vertex="1" parent="recap-section">
+          <mxGeometry y="70" width="360" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="recap-3" value="3️⃣ Advantage Computation&#xa;Compute A(o_t, a_t, ℓ) for all data" style="text;strokeColor=#F06292;fillColor=#F8BBD0;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=12;fontColor=#C2185B;" vertex="1" parent="recap-section">
+          <mxGeometry y="110" width="360" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="recap-4" value="4️⃣ Policy Training&#xa;Train π* with advantage conditioning" style="text;strokeColor=#F06292;fillColor=#F8BBD0;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=12;fontColor=#C2185B;" vertex="1" parent="recap-section">
+          <mxGeometry y="150" width="360" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="recap-5" value="5️⃣ Iterate&#xa;Repeat until performance saturates" style="text;strokeColor=#F06292;fillColor=#F8BBD0;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=12;fontColor=#C2185B;" vertex="1" parent="recap-section">
+          <mxGeometry y="190" width="360" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Tasks Section -->
+        <mxCell id="tasks-section" value="Evaluation Tasks" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#FFF8E1;strokeColor=#FFC107;fontSize=14;fontColor=#F57F17;" vertex="1" parent="1">
+          <mxGeometry x="80" y="380" width="320" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="task-laundry" value="👕 Laundry Folding&#xa;T-shirts, shorts, diverse items (200-500s)" style="text;strokeColor=#FFD54F;fillColor=#FFF9C4;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=12;fontColor=#F57F17;" vertex="1" parent="tasks-section">
+          <mxGeometry y="30" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="task-coffee" value="☕ Espresso Making&#xa;Grind, tamp, extract, serve (200s)" style="text;strokeColor=#FFD54F;fillColor=#FFF9C4;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=12;fontColor=#F57F17;" vertex="1" parent="tasks-section">
+          <mxGeometry y="70" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="task-box" value="📦 Box Assembly&#xa;Fold, label, place in crate (600s)" style="text;strokeColor=#FFD54F;fillColor=#FFF9C4;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=12;fontColor=#F57F17;" vertex="1" parent="tasks-section">
+          <mxGeometry y="110" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="task-results" value="✨ Results:&#xa;• 2× throughput improvement&#xa;• 2× failure rate reduction&#xa;• 90%+ success on most tasks" style="text;strokeColor=#FFD54F;fillColor=#FFF9C4;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=12;fontColor=#F57F17;" vertex="1" parent="tasks-section">
+          <mxGeometry y="150" width="320" height="90" as="geometry" />
+        </mxCell>
+
+        <!-- Performance Metrics -->
+        <mxCell id="metrics" value="Performance: π₀* 0.6 = 4.86B params | Training: Offline RL + Online finetuning | Key Innovation: Advantage Conditioning for policy improvement" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#263238;strokeColor=#37474F;fontSize=12;fontColor=#ECEFF1;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="460" y="680" width="780" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Arrows -->
+        <mxCell id="arrow1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;strokeColor=#4CAF50;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="input-section" target="vlm-section">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;strokeColor=#2196F3;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="vlm-section" target="action-section">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#9C27B0;dashed=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="value-section" target="vlm-section">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#E91E63;dashed=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="recap-section" target="value-section">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Labels -->
+        <mxCell id="label1" value="Multimodal&#xa;Features" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#4CAF50;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="370" y="150" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="label2" value="Rich&#xa;Embeddings" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#2196F3;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="790" y="150" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="label3" value="Value&#xa;Guidance" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#9C27B0;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="650" y="340" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="label4" value="Training&#xa;Loop" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#E91E63;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="830" y="450" width="60" height="30" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
